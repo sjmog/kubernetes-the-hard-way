@@ -4,6 +4,16 @@ Kubernetes requires a set of machines to host the Kubernetes control plane and t
 
 > Ensure a default compute zone and region have been set as described in the [Prerequisites](01-prerequisites.md#set-a-default-compute-region-and-zone) lab.
 
+- :bulb: read about [Google Compute Zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones).
+- :pencil: summarise what a Google Compute Zone is as if you were explaining it to a colleague.
+
+<details>
+  <summary>Compare with a model answr once you're done</summary>
+  
+  - :speech_bubble_ a Zone is Google Compute's interface to where the physical servers are.
+</details>
+
+
 ## Networking
 
 The Kubernetes [networking model](https://kubernetes.io/docs/concepts/cluster-administration/networking/#kubernetes-model) assumes a flat network in which containers and nodes can communicate with each other. In cases where this is not desired [network policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/) can limit how groups of containers are allowed to communicate with each other and external network endpoints.
