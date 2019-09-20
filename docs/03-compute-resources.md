@@ -87,6 +87,14 @@ gcloud compute firewall-rules create kubernetes-the-hard-way-allow-external \
 
 > An [external load balancer](https://cloud.google.com/compute/docs/load-balancing/network/) will be used to expose the Kubernetes API Servers to remote clients.
 
+- :pencil: summarise what an external load balancer is as if you were explaining it to a colleage, linking it to regions. Explain why it is useful. Give an example of its use. (cloud provider concepts)
+
+<details>
+  <summary>Compare with a my answer once you're done</summary>
+  
+  - :speech_bubble: an external load balancer is a layer which dispatches requests to different regions in a network. This means requests can be served closer to their point of origin, speeding up request-response times. For example: a user in Singapore can have their request directed to a network in Singapore, which will serve the request faster than sending the request to a different part of the world.
+</details>
+
 List the firewall rules in the `kubernetes-the-hard-way` VPC network:
 
 ```
