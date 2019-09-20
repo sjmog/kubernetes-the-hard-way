@@ -82,6 +82,8 @@ gcloud compute firewall-rules create kubernetes-the-hard-way-allow-external \
 ```
 
 - 💻 type this out.
+- :sleuth: find out why port 6443 is allowed for external connections.
+- :bulb: read this [awesome story from the early internet](https://www.ssh.com/ssh/port#sec-The-story-of-getting-SSH-port-22) about why port 22 is allowed for external connections.
 
 > An [external load balancer](https://cloud.google.com/compute/docs/load-balancing/network/) will be used to expose the Kubernetes API Servers to remote clients.
 
