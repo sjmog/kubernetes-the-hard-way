@@ -5,12 +5,12 @@ Kubernetes requires a set of machines to host the Kubernetes control plane and t
 > Ensure a default compute zone and region have been set as described in the [Prerequisites](01-prerequisites.md#set-a-default-compute-region-and-zone) lab.
 
 - :bulb: read about [Google Compute Zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones).
-- :pencil: summarise what a Google Compute Zone is as if you were explaining it to a colleague.
+- :pencil: summarise what a Google Compute Zone is as if you were explaining it to a colleague (cloud provider concepts).
 
 <details>
-  <summary>Compare with a model answr once you're done</summary>
+  <summary>Compare with a model answer once you're done</summary>
   
-  - :speech_bubble_ a Zone is Google Compute's interface to where the physical servers are.
+  - :speech_bubble: a zone is Google Compute's interface to where the physical servers are.
 </details>
 
 
@@ -19,6 +19,9 @@ Kubernetes requires a set of machines to host the Kubernetes control plane and t
 The Kubernetes [networking model](https://kubernetes.io/docs/concepts/cluster-administration/networking/#kubernetes-model) assumes a flat network in which containers and nodes can communicate with each other. In cases where this is not desired [network policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/) can limit how groups of containers are allowed to communicate with each other and external network endpoints.
 
 > Setting up network policies is out of scope for this tutorial.
+
+:speech_bubble: a network policy basically decides which network node can communicate with another.
+
 
 ### Virtual Private Cloud Network
 
@@ -30,7 +33,19 @@ Create the `kubernetes-the-hard-way` custom VPC network:
 gcloud compute networks create kubernetes-the-hard-way --subnet-mode custom
 ```
 
+- 💻 type this out.
+- :brain: start a new diagram of a tree of gcloud commands.
+
 A [subnet](https://cloud.google.com/compute/docs/vpc/#vpc_networks_and_subnets) must be provisioned with an IP address range large enough to assign a private IP address to each node in the Kubernetes cluster.
+
+- :bulb: find out what a [subnet](https://cloud.google.com/compute/docs/vpc/#vpc_networks_and_subnets) (or 'subnetwork') is. (networking concepts)
+- :pencil: summarise what a subnet is as if you were explaining it to a colleague.
+
+<details>
+  <summary>Compare with a model answer once you're done</summary>
+  
+  - :speech_bubble: a subnet, or subnetwork, is a limited range of IP addresses within a zone.
+</details>
 
 Create the `kubernetes` subnet in the `kubernetes-the-hard-way` VPC network:
 
@@ -41,6 +56,8 @@ gcloud compute networks subnets create kubernetes \
 ```
 
 > The `10.240.0.0/24` IP address range can host up to 254 compute instances.
+
+- :brain: add `gcloud compute networks subnets create kubernetes` to your tree diagram of gcloud commands.
 
 ### Firewall Rules
 
@@ -53,6 +70,8 @@ gcloud compute firewall-rules create kubernetes-the-hard-way-allow-internal \
   --source-ranges 10.240.0.0/24,10.200.0.0/16
 ```
 
+- 💻 type this out.
+
 Create a firewall rule that allows external SSH, ICMP, and HTTPS:
 
 ```
@@ -61,6 +80,8 @@ gcloud compute firewall-rules create kubernetes-the-hard-way-allow-external \
   --network kubernetes-the-hard-way \
   --source-ranges 0.0.0.0/0
 ```
+
+- 💻 type this out.
 
 > An [external load balancer](https://cloud.google.com/compute/docs/load-balancing/network/) will be used to expose the Kubernetes API Servers to remote clients.
 
