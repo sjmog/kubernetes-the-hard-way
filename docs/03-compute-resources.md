@@ -71,6 +71,7 @@ gcloud compute firewall-rules create kubernetes-the-hard-way-allow-internal \
 ```
 
 - 💻 type this out.
+- :brain: add `gcloud compute firewall-rules create <name>` to your tree diagram of gcloud commands.
 
 Create a firewall rule that allows external SSH, ICMP, and HTTPS:
 
@@ -101,6 +102,8 @@ List the firewall rules in the `kubernetes-the-hard-way` VPC network:
 gcloud compute firewall-rules list --filter="network:kubernetes-the-hard-way"
 ```
 
+- :brain: add `gcloud compute firewall-rules list` to your tree diagram of gcloud commands.
+
 > output
 
 ```
@@ -108,6 +111,8 @@ NAME                                    NETWORK                  DIRECTION  PRIO
 kubernetes-the-hard-way-allow-external  kubernetes-the-hard-way  INGRESS    1000      tcp:22,tcp:6443,icmp
 kubernetes-the-hard-way-allow-internal  kubernetes-the-hard-way  INGRESS    1000      tcp,udp,icmp
 ```
+
+- 🎨 represent the VPC network in a diagram (however you choose). Include: the zone, subnet, and firewall.
 
 ### Kubernetes Public IP Address
 
@@ -118,11 +123,21 @@ gcloud compute addresses create kubernetes-the-hard-way \
   --region $(gcloud config get-value compute/region)
 ```
 
+- :brain: add `gcloud compute addresses create` to your tree diagram of gcloud commands.
+- :pencil: summarise what `gcloud config get-value compute/region` does as if explaining to a colleague. (cloud provider concepts)
+
+<details>
+  <summary>Compare with a my answer once you're done</summary>
+  
+  - :speech_bubble: `gcloud config get-value compute/region` gets the currently-configured default region.
+</details>
+
 Verify the `kubernetes-the-hard-way` static IP address was created in your default compute region:
 
 ```
 gcloud compute addresses list --filter="name=('kubernetes-the-hard-way')"
 ```
+- :brain: add `gcloud compute addresses list` to your tree diagram of gcloud commands.
 
 > output
 
