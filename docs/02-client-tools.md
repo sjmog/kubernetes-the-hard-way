@@ -2,6 +2,21 @@
 
 In this lab you will install the command line utilities required to complete this tutorial: [cfssl](https://github.com/cloudflare/cfssl), [cfssljson](https://github.com/cloudflare/cfssl), and [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl).
 
+> Now go find out what cfssl and kubectl are.
+
+- :bulb: read [this Wikipedia page on TLS-PSK](https://en.wikipedia.org/wiki/TLS-PSK) since it is an important topic in networking.
+- :pencil: Summarise what CFSSL is, showing you understand how it relates to PSK/TLS.
+- :pencil: Summarise what kubectl is. You don't need to find out what a "Kubernetes cluster" is yet.
+
+<details>
+  <summary>Compare with model answers after completing the above</summary>
+  
+  :speech_bubble: CFSSL is CloudFlare's SDK for creating PSK/TLS certification servers. TLS is a way that servers communicate with each other securely. PSK is a way of implementing TLS, by sharing pass keys between communicating servers. The pass keys are unique such that 
+
+  :speech_bubble: kubectl is Kubernetes command-line SDK for managing Kubernetes clusters.
+  
+</details>
+
 
 ## Install CFSSL
 
